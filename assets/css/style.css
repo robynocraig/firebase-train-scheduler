@@ -5,8 +5,13 @@ body {
 .container {
   width: 100%;
   max-width: 960px;
-  margin: 10px auto 0 auto;
+  margin: 10px auto 50px auto;
   clear: both;
+}
+
+.jumbotron {
+   background-color: #20315A;
+   color: white;
 }
 
 .jumbotron h1 {
@@ -21,6 +26,26 @@ h1 i {
   margin: 0 50px;
 }
 
+.card-heading {
+   background-color: #20315A;
+   color: white;
+}
+
 h3 i {
   margin-right: 10px;
+}
+
+h3 {
+  margin: 10px 0 10px 10px;
+}
+
+form {
+  font-weight: bold;
+  margin-left: 10px;
+  width: 500px;
+  color: #20315A;
+}
+
+.btn-primary {
+  background-color: #20315A;
 }
