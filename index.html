@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <title>Robyn's Train Schedules</title>
     <!-- Bootstrap CDN Link -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
       <!-- Font Awesome CSS Icons (For cool glyphicons) -->
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
@@ -21,25 +20,49 @@
 
     <!-- Current Train Schedule Table -->
     <div class="container">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title"><i class="fas fa-train"></i>Current Train Schedule</h3>
+      <div class="card card-default">
+        <div class="card-heading">
+          <h3 class="card-title"><i class="fas fa-train"></i>Current Train Schedules</h3>
         </div>
 
-        <table class="table">
-          Table will go here
-        </table>
+        <div class="card-body">
+
+          <table class="table">
+            Table will go here
+          </table>
+
+        </div>
       </div>
     </div>
 
     <!-- Add Train Search Form -->
     <div class="container">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title"><i class="fas fa-train"></i>Add Train</h3>
+      <div class="card card-default">
+        <div class="card-heading">
+          <h3 class="card-title"><i class="fas fa-train"></i>Add Train</h3>
         </div>
-        <div class="panel-body">
-          Search form will go here
+
+        <div class="card-body">
+
+          <form role="form">
+            <div class="form-group row">
+              <label for="train-name-input">Train Name</label>
+              <input class="form-control" id="train-name-input" type="text">
+            </div>
+            <div class="form-group row">
+              <label for="destination-input">Destination</label>
+              <input class="form-control" id="destination-input" type="text">
+            </div>
+            <div class="form-group row">
+              <label for="time-input">First Train Time</label>
+              <input class="form-control" id="time-input" type="text">
+            </div>
+            <div class="form-group row">
+              <label for="frequency-input">Frequency (in mins)</label>
+              <input class="form-control" id="frequency-input" type="text">
+            </div>
+            <button class="btn btn-primary" id="add-train" type="submit">Add Train</button>
+          </form>
         </div>
       </div>
     </div>
