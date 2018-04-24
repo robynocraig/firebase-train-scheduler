@@ -1,9 +1,3 @@
-// variables
-// moment js function to know current time
-// click function to add train schedule
-// firebase function to store values
-// appending the firebase values to the table
-
 // Firebase values
 var config = {
     apiKey: "AIzaSyCTRNWhUz_05Y1B44T4baTJmFJzD06e5ro",
@@ -46,10 +40,7 @@ $("#add-train-btn").on("click", function(event) {
   console.log(newTrain.firstTrainTime);
   console.log(newTrain.frequency);
 
-  // Alert
-  //alert("Employee successfully added");
-
-  // Clears all of the text-boxes
+  // Clears all of the text-boxes after the user submits the form
   $("#train-name-input").val("");
   $("#destination-input").val("");
   $("#first-train-time-input").val("");
@@ -67,13 +58,33 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   var firstTrainTime = childSnapshot.val().firstTrainTime;
   var frequency = childSnapshot.val().frequency;
 
-  // Employee Info
-  // console.log(empName);
-  // console.log(empRole);
-  // console.log(empStart);
-  // console.log(empRate);
+  // TIME FUNCTIONS
+
+  // First Time (pushed back 1 year to make sure it comes before current time)
+  var firstTimeConverted = moment(firstTrainTime, "HH:mm").subtract(1, "years");
+  console.log(firstTimeConverted);
+
+  // Current Time
+  var currentTime = moment();
+  console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
+
+  // Difference between the times
+  var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+  console.log("DIFFERENCE IN TIME: " + diffTime);
+
+  // Time apart (remainder)
+  var tRemainder = diffTime % frequency;
+  console.log(tRemainder);
+
+  // Minute Until Train
+  var tMinutesTillTrain = frequency - tRemainder;
+  console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+  // Next Train
+  var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+  console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm A"));
 
   // Add each train's data into the table
   $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +
-  frequency + "</td><td>" + firstTrainTime + "</td></tr>");
+  frequency + "</td><td>" + moment(nextTrain).format("hh:mm A") +"</td><td>" + tMinutesTillTrain + "</td></tr>");
 });
