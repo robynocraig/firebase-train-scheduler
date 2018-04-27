@@ -86,5 +86,12 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   // Add each train's data into the table
   $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +
-  frequency + "</td><td>" + moment(nextTrain).format("hh:mm A") +"</td><td>" + tMinutesTillTrain + "</td></tr>");
+  frequency + "</td><td>" + moment(nextTrain).format("hh:mm A") + "</td><td>" + tMinutesTillTrain + "<td><button class='btn btn-danger'>Delete</button></td>" + "</td></tr>");
+
+});
+
+$(document).on('click', 'button', function () {
+  $(this).closest('tr').remove();
+  return false;
+  console.log("This " + this)
 });
